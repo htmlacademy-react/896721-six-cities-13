@@ -1,4 +1,5 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import {AppRoute, AuthorizationStatus} from '../../const';
 import MainHotelCards from '../../pages/mainHotelCards/mainHotelCards';
 import Favorites from '../../pages/favorites/favorites.tsx';
@@ -13,34 +14,36 @@ type AppScreenProps = {
 
 function App({cardHotelCount}: AppScreenProps): JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Root}
-          element={<MainHotelCards cardHotelCount={cardHotelCount} />}
-        />
-        <Route
-          path={AppRoute.Favorites}
-          element={
-            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-              <Favorites/>
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path={AppRoute.Login}
-          element={<Login />}
-        />
-        <Route
-          path={AppRoute.Offer}
-          element={<OfferHotel />}
-        />
-        <Route
-          path="*"
-          element={<Message404 />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path={AppRoute.Root}
+            element={<MainHotelCards cardHotelCount={cardHotelCount} />}
+          />
+          <Route
+            path={AppRoute.Favorites}
+            element={
+              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+                <Favorites/>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={AppRoute.Login}
+            element={<Login />}
+          />
+          <Route
+            path={AppRoute.Offer}
+            element={<OfferHotel />}
+          />
+          <Route
+            path="*"
+            element={<Message404 />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 

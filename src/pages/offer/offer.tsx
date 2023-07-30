@@ -1,3 +1,6 @@
+import { Helmet } from 'react-helmet-async';
+
+
 function OfferHotel(): JSX.Element {
   return (
     <div className="page">
@@ -39,6 +42,9 @@ function OfferHotel(): JSX.Element {
           </div>
         </div>
       </header>
+      <Helmet>
+        <title>Объявление отеля</title>
+      </Helmet>
       <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">

@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import CardHotel from '../../components/cardHotel/cardHotel';
 
 type MainHotelCardsProps = {
@@ -45,6 +46,9 @@ function MainHotelCards({cardHotelCount}: MainHotelCardsProps): JSX.Element {
           </div>
         </div>
       </header>
+      <Helmet>
+        <title>Поиск объявлений</title>
+      </Helmet>
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
