@@ -1,10 +1,11 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import {AppRoute} from '../../const.ts';
+import {AppRoute, AuthorizationStatus} from '../../const';
 import MainHotelCards from '../../pages/mainHotelCards/mainHotelCards';
 import Favorites from '../../pages/favorites/favorites.tsx';
 import Login from '../../pages/login/login.tsx';
 import OfferHotel from '../../pages/offer/offer.tsx';
 import Message404 from '../../pages/404/404.tsx';
+import PrivateRoute from '../private-route/private-route.tsx';
 
 type AppScreenProps = {
   cardHotelCount: number;
@@ -20,7 +21,11 @@ function App({cardHotelCount}: AppScreenProps): JSX.Element {
         />
         <Route
           path={AppRoute.Favorites}
-          element={<Favorites />}
+          element={
+            <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
+              <Favorites/>
+            </PrivateRoute>
+          }
         />
         <Route
           path={AppRoute.Login}
