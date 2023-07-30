@@ -1,4 +1,6 @@
 import { Helmet } from 'react-helmet-async';
+import {Link} from 'react-router-dom';
+import Logo from '../../components/logo/logo';
 
 function Message404(): JSX.Element {
   return (
@@ -7,15 +9,7 @@ function Message404(): JSX.Element {
         <div className="container">
           <div className="header__wrapper">
             <div className="header__left">
-              <a className="header__logo-link" href="main.html">
-                <img
-                  className="header__logo"
-                  src="img/logo.svg"
-                  alt="6 cities logo"
-                  width={81}
-                  height={41}
-                />
-              </a>
+              <Logo/>
             </div>
             <nav className="header__nav">
               <ul className="header__nav-list">
@@ -50,9 +44,9 @@ function Message404(): JSX.Element {
             <h1 className="visually-hidden">Error 404</h1>
             <div className="favorites__status-wrapper" style={{ backgroundImage: '' }}>
               <b className="favorites__status">404. Page not found.</b>
-              <a className="favorites__status-description">
+              <Link to="/" className="favorites__status-description">
                 Back to the main page.
-              </a>
+              </Link>
             </div>
           </section>
         </div>
