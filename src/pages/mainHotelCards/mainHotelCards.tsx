@@ -1,12 +1,13 @@
 import { Helmet } from 'react-helmet-async';
-import CardHotel from '../../components/cardHotel/cardHotel';
 import Logo from '../../components/logo/logo';
+import ListOffers from '../../components/listOffers/listOffers';
+import {Offers} from '../../types/offer';
 
 type MainHotelCardsProps = {
-  cardHotelCount: number;
+  cardsHotel: Offers;
 }
 
-function MainHotelCards({cardHotelCount}: MainHotelCardsProps): JSX.Element {
+function MainHotelCards({cardsHotel}: MainHotelCardsProps): JSX.Element {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -111,11 +112,7 @@ function MainHotelCards({cardHotelCount}: MainHotelCardsProps): JSX.Element {
                   </li>
                 </ul>
               </form>
-              <div className="cities__places-list places__list tabs__content">
-                {[...Array(cardHotelCount).keys()].map((count: number) => (
-                  <CardHotel key={count} />
-                ))}
-              </div>
+              <ListOffers cardsHotel={cardsHotel}/>
             </section>
             <div className="cities__right-section">
               <section className="cities__map map" />

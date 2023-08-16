@@ -7,25 +7,26 @@ import Login from '../../pages/login/login.tsx';
 import OfferHotel from '../../pages/offer/offer.tsx';
 import Message404 from '../../pages/404/404.tsx';
 import PrivateRoute from '../private-route/private-route.tsx';
+import {Offers} from '../../types/offer';
 
 type AppScreenProps = {
-  cardHotelCount: number;
+  cardsHotel: Offers;
 }
 
-function App({cardHotelCount}: AppScreenProps): JSX.Element {
+function App({cardsHotel}: AppScreenProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Root}
-            element={<MainHotelCards cardHotelCount={cardHotelCount} />}
+            element={<MainHotelCards cardsHotel={cardsHotel} />}
           />
           <Route
             path={AppRoute.Favorites}
             element={
-              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
-                <Favorites/>
+              <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}>
+                <Favorites cardsHotel={cardsHotel}/>
               </PrivateRoute>
             }
           />
